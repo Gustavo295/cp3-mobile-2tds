@@ -5,6 +5,7 @@ import { CameraView, useCameraPermissions } from "expo-camera";
 export default function BarcodeScanner() {
   const [permission, requestPermission] = useCameraPermissions();
   const [scanned, setScanned] = useState(false);
+  const [isCameraActive, setIsCameraActive] = useState(true);
 
   useEffect(() => {
     if (!permission?.granted) {
@@ -12,9 +13,7 @@ export default function BarcodeScanner() {
     }
   }, []);
 
-  if (!permission) {
-    return <View />;
-  }
+  if (!permission) return <View />;
 
   if (!permission.granted) {
     return (
@@ -25,19 +24,30 @@ export default function BarcodeScanner() {
     );
   }
 
+  const handleBarcodeScanned = ({ type, data }) => {
+    setScanned(true);
+    setIsCameraActive(false);
+    Alert.alert("Código lido!", `Tipo: ${type}\nValor: ${data}`);
+  };
+
   return (
     <View style={styles.container}>
-      <CameraView
-        style={StyleSheet.absoluteFillObject}
-        onBarcodeScanned={({ type, data }) => {
-          if (!scanned) {
-            setScanned(true);
-            Alert.alert("Código lido!", `Tipo: ${type}\nValor: ${data}`);
-          }
-        }}
-      />
-      {scanned && (
-        <Button title="Escanear novamente" onPress={() => setScanned(false)} />
+      {isCameraActive ? (
+        <CameraView
+          style={StyleSheet.absoluteFillObject}
+          onBarcodeScanned={handleBarcodeScanned}
+        />
+      ) : (
+        <View style={styles.center}>
+          <Text>Escaneamento concluído!</Text>
+          <Button
+            title="Escanear novamente"
+            onPress={() => {
+              setScanned(false);
+              setIsCameraActive(true);
+            }}
+          />
+        </View>
       )}
     </View>
   );
@@ -49,5 +59,6 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
+    padding: 20,
   },
 });
