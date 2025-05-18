@@ -1,115 +1,135 @@
-import { StatusBar } from 'expo-status-bar';
+import { StatusBar } from "expo-status-bar";
 import styles from "../styles/styles";
-import { useState, useEffect } from 'react';
-import { StyleSheet, Text, View, TextInput, TouchableOpacity, FlatList, Keyboard } from 'react-native';
-import { TextInputMask } from 'react-native-masked-text';
-import AsyncStorage from '@react-native-async-storage/async-storage';
+import { useState, useEffect } from "react";
+import {
+  StyleSheet,
+  Text,
+  View,
+  TextInput,
+  TouchableOpacity,
+  FlatList,
+  Keyboard,
+} from "react-native";
+import { TextInputMask } from "react-native-masked-text";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 export default function App() {
-  const [nomeProduto, setNomeProduto] = useState("")
-  const [dataFabricacao, setDataFabricacao] = useState()
-  const [dataValidade, setDataValidade] = useState()
-  const [quantidade, setQuantidade] = useState(0)
-  const [lote, setLote] = useState("")
-  const [dados, setDados] = useState([])
-  const [produtoEditado, setProdutoEditado] = useState(null)
+  const [nomeProduto, setNomeProduto] = useState("");
+  const [dataFabricacao, setDataFabricacao] = useState("");
+  const [dataValidade, setDataValidade] = useState("");
+  const [quantidade, setQuantidade] = useState("0");
+  const [lote, setLote] = useState("");
+  const [dados, setDados] = useState([]);
+  const [produtoEditado, setProdutoEditado] = useState(null);
 
   useEffect(() => {
-    buscarDados()
-  }, [])
+    buscarDados();
+  }, []);
 
   async function Salvar() {
-    Keyboard.dismiss()
-    let produtos = []
+    Keyboard.dismiss();
+    let produtos = [];
 
-    if (await AsyncStorage.getItem("PRODUTOS") != null) {
-      produtos = JSON.parse(await AsyncStorage.getItem("PRODUTOS"))
+    if ((await AsyncStorage.getItem("PRODUTOS")) != null) {
+      produtos = JSON.parse(await AsyncStorage.getItem("PRODUTOS"));
     }
 
     if (produtoEditado) {
-      produtos[produtoEditado.index] = { nome: nomeProduto, dataF: dataFabricacao, dataV: dataValidade, quantidade: quantidade, lote: lote}
+      produtos[produtoEditado.index] = {
+        nome: nomeProduto,
+        dataF: dataFabricacao,
+        dataV: dataValidade,
+        quantidade: quantidade,
+        lote: lote,
+      };
     } else {
-       produtos.push({ nome: nomeProduto, dataF: dataFabricacao, dataV: dataValidade, quantidade: quantidade, lote: lote})
+      produtos.push({
+        nome: nomeProduto,
+        dataF: dataFabricacao,
+        dataV: dataValidade,
+        quantidade: quantidade,
+        lote: lote,
+      });
     }
 
-    await AsyncStorage.setItem("PRODUTOS", JSON.stringify(produtos))
+    await AsyncStorage.setItem("PRODUTOS", JSON.stringify(produtos));
 
-    setProdutoEditado(null)
+    setProdutoEditado(null);
 
-    setNomeProduto('')
-    setDataFabricacao('')
-    setDataValidade('')
-    setQuantidade('')
-    setLote('')
+    setNomeProduto("");
+    setDataFabricacao("");
+    setDataValidade("");
+    setQuantidade("");
+    setLote("");
 
-    buscarDados()
+    buscarDados();
   }
 
   async function buscarDados() {
-    const p = await AsyncStorage.getItem("PRODUTOS")
-    setDados(JSON.parse(p))
-
+    const p = await AsyncStorage.getItem("PRODUTOS");
+    setDados(JSON.parse(p));
   }
 
   async function deletarProduto(index) {
-
-    const tempDados = dados
+    const tempDados = dados;
     const dadosAtualizado = tempDados.filter((item, ind) => {
-      return ind !== index
-    })
-    setDados(dadosAtualizado)
-    await AsyncStorage.setItem("PRODUTOS", JSON.stringify(dadosAtualizado))
+      return ind !== index;
+    });
+    setDados(dadosAtualizado);
+    await AsyncStorage.setItem("PRODUTOS", JSON.stringify(dadosAtualizado));
   }
 
   function editarProduto(index) {
-    const produto = dados[index]
-    setNomeProduto(produto.nome)
-    setDataFabricacao(produto.dataF)
-    setDataValidade(produto.dataV)
-    setQuantidade(produto.quantidade)
-    setLote(produto.lote)
-    setProdutoEditado({ index })
+    const produto = dados[index];
+    setNomeProduto(produto.nome);
+    setDataFabricacao(produto.dataF);
+    setDataValidade(produto.dataV);
+    setQuantidade(produto.quantidade);
+    setLote(produto.lote);
+    setProdutoEditado({ index });
   }
   return (
     <View style={styles.container}>
       <Text>Cadastro</Text>
       <TextInput
-        placeholder='Nome do produto'
+        placeholder="Nome do produto"
         style={styles.input}
         value={nomeProduto}
         onChangeText={(value) => setNomeProduto(value)}
       />
 
       <TextInput
-        placeholder='Data de Fabricação'
+        placeholder="Data de Fabricação"
         style={styles.input}
         value={dataFabricacao}
         onChangeText={(value) => setDataFabricacao(value)}
       />
- 
+
       <TextInput
-        placeholder='Data de Validade'
+        placeholder="Data de Validade"
         style={styles.input}
         value={dataValidade}
         onChangeText={(value) => setDataValidade(value)}
       />
-      
+
       <TextInput
-        placeholder='Quantidade'
+        placeholder="Quantidade"
         style={styles.input}
         value={quantidade}
         onChangeText={(value) => setQuantidade(value)}
       />
 
       <TextInput
-        placeholder='Lote'
+        placeholder="Lote"
         style={styles.input}
         value={lote}
         onChangeText={(value) => setLote(value)}
       />
 
       <TouchableOpacity style={styles.btn} onPress={Salvar}>
-        <Text style={{ color: "white" }}>{produtoEditado ? "ATUALIZAR" : "CADASTRAR"}</Text>
+        <Text style={{ color: "white" }}>
+          {produtoEditado ? "ATUALIZAR" : "CADASTRAR"}
+        </Text>
       </TouchableOpacity>
 
       <FlatList
@@ -117,7 +137,6 @@ export default function App() {
         renderItem={({ item, index }) => {
           if (!item || !item.nome) return null;
           return (
-
             <View style={styles.listarFlat}>
               <View>
                 <Text>Nome:{item.nome}</Text>
@@ -142,11 +161,8 @@ export default function App() {
                   <Text>Editar</Text>
                 </TouchableOpacity>
               </View>
-
             </View>
-
-
-          )
+          );
         }}
       />
 

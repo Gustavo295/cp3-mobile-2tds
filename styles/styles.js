@@ -1,7 +1,7 @@
-import {StyleSheet} from "react-native"
+import { StyleSheet } from "react-native"
 
 export default styles = StyleSheet.create({
-    container: {
+  container: {
     flex: 1,
     backgroundColor: '#fff',
     alignItems: 'center',
@@ -27,7 +27,6 @@ export default styles = StyleSheet.create({
   listarFlat: {
     width: 300,
     borderWidth: 1,
-    height: 80,
     textAlign: "center",
     justifyContent: "center",
     alignItems: "center",
@@ -50,5 +49,10 @@ export default styles = StyleSheet.create({
     alignItems: "center",
     height: 21,
     marginTop: 7
+  },
+  link: {
+    fontSize: 18,
+    color: 'blue',
+    textDecorationLine: 'underline',
   }
 })
