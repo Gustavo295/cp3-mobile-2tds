@@ -5,27 +5,60 @@ export default styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#fff',
     alignItems: 'center',
-    justifyContent: 'flex-start',
+    justifyContent: 'center',
     marginTop: 30
   },
+  background: {
+      flex: 1,
+      position: 'absolute',
+      left: 0,
+      right: 0,
+      top: 0,
+      height: 1100,
+  },
+  content: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    gap: 20, 
+  },
+  contentCadastro: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  center: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+    padding: 20,
+  },
+  title: {
+    fontSize: 32,
+    fontWeight: 'bold',
+    color: '#fff',
+    marginBottom: 20,
+  },
   input: {
+    backgroundColor: "blue",
     borderWidth: 1,
     height: 50,
-    width: 300,
+    width: 220,
     borderRadius: 15,
-    marginTop: 10
+    marginTop: 5
   },
   btn: {
     backgroundColor: "blue",
-    height: 50,
-    width: 200,
+    height: 40,
+    width: 150,
     justifyContent: 'center',
     alignItems: "center",
     borderRadius: 15,
     marginTop: 10
   },
   listarFlat: {
-    width: 300,
+    backgroundColor: '#fff',
+    width: 220,
     borderWidth: 1,
     textAlign: "center",
     justifyContent: "center",
@@ -36,23 +69,28 @@ export default styles = StyleSheet.create({
   },
   btnExcluir: {
     backgroundColor: "red",
-    width: 100,
+    width: 80,
     borderRadius: 15,
     alignItems: "center",
     height: 21,
-    marginTop: 7
+    marginTop: 7,
+    marginBottom: 7,
   },
   btnEditar: {
     backgroundColor: "orange",
-    width: 100,
+    width: 80,
     borderRadius: 15,
     alignItems: "center",
     height: 21,
-    marginTop: 7
+    marginTop: 7,
+    marginBottom: 7,
   },
   link: {
+    backgroundColor: '#fff',
     fontSize: 18,
-    color: 'blue',
-    textDecorationLine: 'underline',
+    color: '#fff',
+    width: 250,
+    height: 40,
+    borderRadius: 10
   }
 })
