@@ -7,7 +7,7 @@ export default function TelaInicial() {
   return (
     <View style={styles.container}>
       <LinearGradient
-        colors={['#111', '#1341f5']}
+        colors={['#e5fbff', '#c8f6ff']}
         style={styles.background}
       />
       <View style={styles.content}>
@@ -16,7 +16,7 @@ export default function TelaInicial() {
           <Text>Cadastro de Produtos</Text>
         </Link>
         <Link href="/cam" style={styles.link}>
-          <Text>Scannear Codigo de Barras</Text>
+          <Text>Escanear Codigo de Barras</Text>
         </Link>
         <Link href="/devs" style={styles.link}>
           <Text>Desenvolvedores</Text>

@@ -114,7 +114,7 @@ export default function TelaCadastro() {
   return (
     <View style={styles.container}>
       <LinearGradient
-        colors={['#111', '#1341f5']}
+        colors={['#e5fbff', '#c8f6ff']}
         style={styles.background}
       />
       <View style={styles.contentCadastro}>
@@ -178,12 +178,12 @@ export default function TelaCadastro() {
           return (
             <View style={styles.listarFlat}>
               <View>
-                <Text>Nome:{item.nome}</Text>
-                <Text>Data de Fabricação: {item.dataF}</Text>
-                <Text>Data de Validade: {item.dataV}</Text>
-                <Text>Quantidade: {item.quantidade}</Text>
-                <Text>Lote: {item.lote}</Text>
-                <Text>Estado: {item.estado}</Text>
+                <Text style={{ fontSize: 15, color: "#e5fbff" }}>Nome:{item.nome}</Text>
+                <Text style={{ fontSize: 15, color: "#e5fbff" }}>Data de Fabricação: {item.dataF}</Text>
+                <Text style={{ fontSize: 15, color: "#e5fbff" }}>Data de Validade: {item.dataV}</Text>
+                <Text style={{ fontSize: 15, color: "#e5fbff" }}>Quantidade: {item.quantidade}</Text>
+                <Text style={{ fontSize: 15, color: "#e5fbff" }}>Lote: {item.lote}</Text>
+                <Text style={{ fontSize: 15, color: "#e5fbff" }}>Estado: {item.estado}</Text>
               </View>
 
               <View style={{ flexDirection: "row" }}>

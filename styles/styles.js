@@ -9,18 +9,18 @@ export default styles = StyleSheet.create({
     marginTop: 30
   },
   background: {
-    flex: 1,
-    position: 'absolute',
-    left: 0,
-    right: 0,
-    top: 0,
-    height: 1100,
+      flex: 1,
+      position: 'absolute',
+      left: 0,
+      right: 0,
+      top: 0,
+      height: 1100,
   },
   content: {
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    gap: 20,
+    gap: 20, 
   },
   contentCadastro: {
     flex: 1,
@@ -36,12 +36,13 @@ export default styles = StyleSheet.create({
   title: {
     fontSize: 32,
     fontWeight: 'bold',
-    color: '#fff',
+    color: '#002c4e',
     marginBottom: 20,
   },
   input: {
-    backgroundColor: "blue",
+    backgroundColor: '#e5fbff',
     borderWidth: 1,
+    color: '#002c4e',
     height: 50,
     width: 220,
     borderRadius: 15,
@@ -57,8 +58,9 @@ export default styles = StyleSheet.create({
     marginTop: 10
   },
   listarFlat: {
-    backgroundColor: '#fff',
+    backgroundColor: '#002c4e',
     width: 220,
+    color: '#e5fbff',
     borderWidth: 1,
     textAlign: "center",
     justifyContent: "center",
@@ -75,6 +77,7 @@ export default styles = StyleSheet.create({
     height: 21,
     marginTop: 7,
     marginBottom: 7,
+    marginRight: 3,
   },
   btnEditar: {
     backgroundColor: "orange",
@@ -86,12 +89,16 @@ export default styles = StyleSheet.create({
     marginBottom: 7,
   },
   link: {
-    backgroundColor: '#fff',
+    backgroundColor: '#002c4e',
     fontSize: 18,
-    color: '#000',
-    textAlign: 'center',
+    color: '#e5fbff',
     width: 250,
     height: 40,
+    alignItems: 'center',
+    textAlign: 'center',
     borderRadius: 10
+  },
+  textList: {
+    textColor: '#e5fbff',
   }
 })
