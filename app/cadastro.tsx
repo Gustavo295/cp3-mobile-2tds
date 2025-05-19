@@ -2,8 +2,8 @@ import { StatusBar } from "expo-status-bar";
 import styles from "../styles/styles";
 import { useState, useEffect } from "react";
 import { StyleSheet, Text, View, TextInput, TouchableOpacity, FlatList, Keyboard, Alert} from "react-native";
-import { TextInputMask } from "react-native-masked-text";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import { LinearGradient } from "expo-linear-gradient";
 
 const estadosValidos = [
   'AC', 'AL', 'AP', 'AM', 'BA', 'CE', 'DF', 'ES', 'GO',
@@ -113,7 +113,12 @@ export default function TelaCadastro() {
   }
   return (
     <View style={styles.container}>
-      <Text>Cadastro</Text>
+      <LinearGradient
+        colors={['#111', '#1341f5']}
+        style={styles.background}
+      />
+      <View style={styles.contentCadastro}>
+      <Text style={styles.title}>Cadastro</Text>
       <TextInput
         placeholder="Nome do produto"
         style={styles.input}
@@ -202,6 +207,7 @@ export default function TelaCadastro() {
         }}
       />
       <StatusBar style="auto" />
+      </View>
     </View>
   );
 }
