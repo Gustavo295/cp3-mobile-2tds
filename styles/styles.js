@@ -9,18 +9,18 @@ export default styles = StyleSheet.create({
     marginTop: 30
   },
   background: {
-      flex: 1,
-      position: 'absolute',
-      left: 0,
-      right: 0,
-      top: 0,
-      height: 1100,
+    flex: 1,
+    position: 'absolute',
+    left: 0,
+    right: 0,
+    top: 0,
+    height: 1100,
   },
   content: {
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    gap: 20, 
+    gap: 20,
   },
   contentCadastro: {
     flex: 1,
